@@ -140,3 +140,8 @@ document.getElementById("copy-bangladesh-railway-helpline").addEventListener("cl
     document.getElementById("copy-count").innerText = copyCount;
 });
 
+// clear button feature
+document.getElementById("clear-btn").addEventListener("click", function() {
+    document.getElementById("call-history-list").innerHTML = "";
+    callHistory.length = 0; // Clear the call history array
+});
