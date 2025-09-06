@@ -1,6 +1,9 @@
-console.log("Hello, World!");
-
 let heartIcon = 0;
+
+const callHistory = [];
+
+console.log(callHistory);
+
 
 // wishlist feature
 const wishlistElements = document.querySelectorAll('.wishlist');
@@ -12,6 +15,7 @@ wishlistElements.forEach(element => {
     });
 });
 
+
 // emergency call feature
 
 function call(name, number) {
@@ -20,6 +24,23 @@ function call(name, number) {
         let currentCoins = parseInt(document.getElementById("coin-count").innerText);
         currentCoins= currentCoins - 20;
         document.getElementById("coin-count").innerText = currentCoins;
+        callHistory.push({ name: name, number: number, time: new Date().toLocaleTimeString() });
+        const callHistoryList = document.getElementById("call-history-list");
+        const listItem = document.createElement("div");
+        listItem.innerHTML = `
+        <div id="call-history-list">
+            <div class="flex items-center justify-between p-5">
+            <div>
+                <h2 class="text-lg font-semibold">${name}</h2>
+                <p>${number}</p>
+            </div>
+            <div>
+                <p>${new Date().toLocaleTimeString()}</p>
+            </div>
+            </div>
+        </div>
+        `;
+        callHistoryList.appendChild(listItem);
     }
     else {
         alert("Insufficient coins to make a call.");
