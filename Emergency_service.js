@@ -15,8 +15,16 @@ wishlistElements.forEach(element => {
 // emergency call feature
 
 function call(name, number) {
-    alert("Calling " + name + " at " + number);
-}
+    if (document.getElementById("coin-count").innerText > 0) {
+        alert("Calling " + name + " at " + number);
+        let currentCoins = parseInt(document.getElementById("coin-count").innerText);
+        currentCoins= currentCoins - 20;
+        document.getElementById("coin-count").innerText = currentCoins;
+    }
+    else {
+        alert("Insufficient coins to make a call.");
+    }
+}   
 
 document.getElementById("national-emergency-call").addEventListener("click", function() {
     call(document.getElementById("National Emergency").innerText, document.getElementById("National Emergency Number").innerText);
@@ -40,6 +48,18 @@ document.getElementById("women-child-helpline-call").addEventListener("click", f
 
 document.getElementById("anti-corruption-helpline-call").addEventListener("click", function() {
     call(document.getElementById("Anti-Corruption").innerText, document.getElementById("Anti Corruption Helpline Number").innerText);
+}   );
+
+document.getElementById("electricity-helpline-call").addEventListener("click", function() {
+    call(document.getElementById("Electricity Outage").innerText, document.getElementById("Electricity-Helpline-number").innerText);
+}   );
+
+document.getElementById("brac-helpline-call").addEventListener("click", function() {
+    call(document.getElementById("Brac").innerText, document.getElementById("BRAC Helpline Number").innerText);
+}   );
+
+document.getElementById("bangladesh-railway-helpline-call").addEventListener("click", function() {
+    call(document.getElementById("Bangladesh Railway").innerText, document.getElementById("Bangladesh Railway Helpline Number").innerText);
 }   );
 
 
